@@ -1,0 +1,79 @@
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+body {
+	background-color: lightgrey;
+}
+
+.beginHeader {
+	background-image: url(/images/bg-header-desktop.png);
+	background-color: grey;
+	height: 150px;
+	width: 1920px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: static;
+}
+
+.container-fluid {
+	width: 1600px;
+	height: auto;
+	margin-top: 50px;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.searchField {
+	padding-left: 0;
+	margin-left: 144px;
+	width: 1630px;
+}
+
+.jobDescription {
+	width: 1000px;
+	padding-left: 30px;
+}
+
+.jobFilter {
+	padding-left: 100px;
+	width: 600px;
+}
+
+.company {
+	width: auto;
+	position: absolute;
+}
+
+.btn {
+	border-radius: 25px;
+	display: inline;
+	position: absolute;
+}
+
+.btn1 {
+	padding-left: 90px;
+}
+
+.btn2 {
+	padding-left: 150px;
+}
+
+.job {
+	margin-top: 40px;
+}
+
+.filters {
+	margin-top: 41px;
+}
+
+.filterWord {
+	background-color: lightgrey;
+	margin-right: 10px;
+	font-size: 20px;
+	text-align: center;
+	display: inline;
+}

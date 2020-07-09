@@ -18,21 +18,6 @@ class jsonValues {
 	}
 }
 
-function getJobs() {
-	var parseVals;
-	fetch('./data.json')
-		.then(function (resp) {
-			return resp.json();
-		})
-		.then(function (data) {
-			for (let i = 0; i < data.length; i++) {
-				parseVals = new jsonValues(data[i].company);
-			}
-			//var parseVals = new jsonValues(data.company);
-			//console.log(data[0].company);
-		});
-}
-
 document.addEventListener('keypress', (event) => {
 	if (event.keyCode === 13 || event.which === 13) {
 		displaySearch();
@@ -50,93 +35,48 @@ function displaySearch() {
 				return resp.json();
 			})
 			.then(function (data) {
-				console.log(data);
-
 				for (let i = 0; i < data.length; i++) {
-					// console.log(data);
+					if (
+						// prettier-ignore
+						searchValue.value.toLowerCase() === data[i].company.toLowerCase() ||
+                        data[i].company.toLowerCase().includes(searchValue.value.toLowerCase())
+					) {
+						renderCompanies(d1, data[i]);
+					}
 
-					parseVals = new jsonValues(
-						data[i].company,
-						data[i].position,
-						data[i].role[i],
-						data[i].level,
-						data[i].postedAt,
-						data[i].contract,
-						data[i].location,
-						data[i].languages[i],
-						data[i].tools
-					);
-					// console.log(data.role[i]);
-
-					if (searchValue.value === data[i].company) {
-						d1.insertAdjacentHTML(
-							'beforeend',
-							// prettier-ignore
-							`<div class="container-fluid new-search">
-						        <div class="row">
-						            <div class="card card-body">
-						                <div class="card-body row">
-						                    <div>
-						                        <span>
-						                            <img src="images/${data[i].company.toLowerCase()}.svg" alt="" />
-						                        </span>
-						                    </div>
-						                    <div class="jobDescription">
-						                        <p class="company">
-						                            ${data[i].company}
-						                        </p>
-						                        <p class="company btn1">
-						                            <button type="button" class="btn btn-success btn-sm">NEW!</button>
-						                        </p>
-						                        <p class="company btn2">
-						                            <button type="button" class="btn btn-success btn-sm">FEATURED</button>
-						                        </p>
-						                        <p class="job">
-						                            ${data[i].position}
-						                        </p>
-						                        <p>
-						                            ${data[i].postedAt} ${data[i].contract}  ${data[i].location}
-						                        </p>
-						                    </div>
-						                    <div class="filters">
-                                                <span class="filterWord">
-                                                ${data[i].role}
-                                                </span>
-                                                <span class="filterWord">
-                                                    ${data[i].level}
-                                                </span>
-                                                <span class="filterWord">
-                                                    ${data[i].languages[0]}
-                                                </span>
-                                                <span class="filterWord">
-                                                    ${data[i].languages[1]}
-                                                </span>
-                                                <span class="filterWord">
-                                                    ${data[i].languages[2]}
-                                                </span>
-                                                <span class="filterWord">
-                                                    ${data[i].tools[0]}
-                                                </span>
-						            
-						                    </div>
-						            </div>
-						        </div>
-						    </div>`
-						);
-					} else if (
-						searchValue.value === data[i].position ||
+					if (
+						searchValue.value.toLowerCase() === data[i].position.toLowerCase() ||
 						data[i].position.includes(searchValue.value)
 					) {
+						renderCompanies(d1, data[i]);
+					}
+
+					if (
+						searchValue.value.toLowerCase() === data[i].role.toLowerCase() ||
+						data[i].role.includes(searchValue.value)
+					) {
+						renderCompanies(d1, data[i]);
+					}
+
+					if (
+						searchValue.value.toLowerCase() === data[i].level.toLowerCase() ||
+						data[i].level.includes(searchValue.value)
+					) {
+						renderCompanies(d1, data[i]);
+					}
+
+					if (
+						searchValue.value.toLowerCase() === data[i].location.toLowerCase() ||
+						data[i].location.includes(searchValue.value)
+					) {
+						renderCompanies(d1, data[i]);
 					}
 				}
-
-				//var parseVals = new jsonValues(data.company);
-				//console.log(data[0].company);
 			});
 	}
 }
 
-function renderCompanies(d1) {
+function renderCompanies(d1, data) {
 	d1.insertAdjacentHTML(
 		'beforeend',
 		// prettier-ignore
@@ -146,13 +86,13 @@ function renderCompanies(d1) {
                     <div class="card-body row">
                         <div>
                             <span>
-                                <img src="images/${data[i].company.toLowerCase()}.svg" alt="" />
+                                <img src="images/${data.company.toLowerCase()}.svg" alt="" />
                             </span>
                         </div>
 
                         <div class="jobDescription">
                             <p class="company">
-                                ${data[i].company}
+                                ${data.company}
                             </p>
                             <p class="company btn1">
                                 <button type="button" class="btn btn-success btn-sm">NEW!</button>
@@ -163,34 +103,16 @@ function renderCompanies(d1) {
                             </p>
 
                             <p class="job">
-                                ${data[i].position}
+                                ${data.position}
                             </p>
 
                             <p>
-                                ${data[i].postedAt} ${data[i].contract}  ${data[i].location}
+                                ${data.postedAt} ${data.contract}  ${data.location}
                             </p>
                         </div>
 
                         <div class="filters">
-                            <span class="filterWord">
-                                ${data[i].role}
-                            </span>
-                            <span class="filterWord">
-                                ${data[i].level}
-                            </span>
-                            <span class="filterWord">
-                                ${data[i].languages[0]}
-                            </span>
-                            <span class="filterWord">
-                                ${data[i].languages[1]}
-                            </span>
-                            <span class="filterWord">
-                                ${data[i].languages[2]}
-                            </span>
-                            <span class="filterWord">
-                                ${data[i].tools[0]}
-                            </span>
-
+           
                         </div>
                 </div>
                 
@@ -198,4 +120,27 @@ function renderCompanies(d1) {
 
         </div>`
 	);
+
+	var d2 = document.querySelector('.filters');
+
+	d2.insertAdjacentHTML(
+		'beforeend',
+		`<span class="filterWord"> ${data.role} </span>
+	    <span class="filterWord"> ${data.level} </span>`
+	);
+
+	// for (let j = 0; j < data.languages.length; j++) {
+	// 	if (typeof data.languages[j] !== 'undefined') {
+	// 		d2.insertAdjacentHTML('beforeend', `<span class="filterWord"> ${data.languages[j]} </span>`);
+	// 	}
+	// }
+
+	// for (let k = 0; k < data.tools.length; k++) {
+	// 	console.log(data.tools[k]);
+	// 	if (typeof data.tools[k] !== 'undefined') {
+	// 		d2.insertAdjacentHTML('beforeend', `<span class="filterWord"> ${data.tools[k]} </span>`);
+	// 	}
+	// }
+
+	// console.log(d2.innerHTML);
 }

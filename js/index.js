@@ -1,5 +1,3 @@
-const { elements } = require('../../JavaScript/To-Do-Wep-App/js/models/toDoModel');
-
 var searchValue = document.querySelector('.searchVal');
 
 class jsonValues {
@@ -59,7 +57,7 @@ class jsonValues {
                                 </div>
                                 <div class="jobDescription">
                                     <p class="company">
-                                        ${this.company}
+                                    ${this.company}
                                     </p>
                                     <p class="company btn1">
                                        ${btn1}
@@ -68,7 +66,7 @@ class jsonValues {
                                         ${btn2}
                                     </p>
                                     <p class="job">
-                                        ${this.position}
+                                    <strong>${this.position}</strong>
                                     </p>
                                     <p>
                                         ${this.postedAt} ${this.contract}  ${this.location}
@@ -110,6 +108,8 @@ function displaySearch() {
 			.then(function (data) {
 				for (let i = 0; i < data.length; i++) {
 					parseVals = new jsonValues(
+						// For comapanies with space use DOM to add a '-' and then join strings
+						// together but first use if statement to check
 						data[i].company,
 						data[i].position,
 						data[i].role,
@@ -126,39 +126,42 @@ function displaySearch() {
 
 					if (
 						// prettier-ignore
+						searchValue.value.toLowerCase() === parseVals.company.toLowerCase() ||
+					    parseVals.company.toLowerCase().includes(searchValue.value.toLowerCase())
+					) {
+						parseVals.createFilters();
+					} else if (
+						searchValue.value.toLowerCase() === parseVals.position.toLowerCase() ||
+						parseVals.position.includes(searchValue.value)
+					) {
+						parseVals.createFilters();
+					} else if (
 						searchValue.value.toLowerCase() === parseVals.role.toLowerCase() ||
-					    parseVals.role.toLowerCase().includes(searchValue.value.toLowerCase())
+						parseVals.role.includes(searchValue.value)
+					) {
+						parseVals.createFilters();
+					} else if (
+						searchValue.value.toLowerCase() === parseVals.level.toLowerCase() ||
+						parseVals.level.includes(searchValue.value)
+					) {
+						parseVals.createFilters();
+					} else if (
+						searchValue.value.toLowerCase() === parseVals.location.toLowerCase() ||
+						parseVals.location.includes(searchValue.value)
+					) {
+						parseVals.createFilters();
+					} else if (
+						searchValue.value.toLowerCase() === parseVals.languages.toString().toLowerCase() ||
+						parseVals.languages.toString().includes(searchValue.value)
+					) {
+						parseVals.createFilters();
+					} else if (
+						searchValue.value.toLowerCase() === parseVals.tools.toString().toLowerCase() ||
+						parseVals.tools.toString().includes(searchValue.value)
 					) {
 						parseVals.createFilters();
 					}
 				}
-				// if (
-				// 	searchValue.value.toLowerCase() === data[i].position.toLowerCase() ||
-				// 	data[i].position.includes(searchValue.value)
-				// ) {
-				// 	renderCompanies(d1, data[i]);
-				// }
-
-				// if (
-				// 	searchValue.value.toLowerCase() === data[i].role.toLowerCase() ||
-				// 	data[i].role.includes(searchValue.value)
-				// ) {
-				// 	renderCompanies(d1, data[i]);
-				// }
-
-				// if (
-				// 	searchValue.value.toLowerCase() === data[i].level.toLowerCase() ||
-				// 	data[i].level.includes(searchValue.value)
-				// ) {
-				// 	renderCompanies(d1, data[i]);
-				// }
-
-				// if (
-				// 	searchValue.value.toLowerCase() === data[i].location.toLowerCase() ||
-				// 	data[i].location.includes(searchValue.value)
-				// ) {
-				// 	renderCompanies(d1, data[i]);
-				// }
 			});
 	}
 }

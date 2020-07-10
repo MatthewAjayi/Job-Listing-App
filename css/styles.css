@@ -74,6 +74,10 @@ body {
 	background-color: lightgrey;
 	margin-right: 10px;
 	font-size: 20px;
+	padding-right: 2px;
+	padding-left: 2px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	text-align: center;
 	display: inline;
 }
@@ -81,4 +85,8 @@ body {
 .title {
 	padding-top: 40px;
 	text-align: center;
+}
+
+p {
+	color: gray;
 }

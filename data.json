@@ -61,8 +61,8 @@
 	},
 	{
 		"id": 5,
-		"company": "Loop Studios",
-		"logo": "./images/loop-studios.svg",
+		"company": "LoopStudios",
+		"logo": "./images/loopstudios.svg",
 		"new": false,
 		"featured": false,
 		"position": "Software Engineer",
@@ -121,8 +121,8 @@
 	},
 	{
 		"id": 9,
-		"company": "Eyecam Co.",
-		"logo": "./images/eyecam-co.svg",
+		"company": "Eyecam",
+		"logo": "./images/eyecam.svg",
 		"new": false,
 		"featured": false,
 		"position": "Full Stack Engineer",
@@ -133,35 +133,5 @@
 		"location": "Worldwide",
 		"languages": ["JavaScript", "Python"],
 		"tools": ["Django"]
-	},
-	{
-		"id": 10,
-		"company": "The Air Filter Company",
-		"logo": "./images/the-air-filter-company.svg",
-		"new": false,
-		"featured": false,
-		"position": "Front-end Dev",
-		"role": "Frontend",
-		"level": "Junior",
-		"postedAt": "1mo ago",
-		"contract": "Part Time",
-		"location": "Worldwide",
-		"languages": ["JavaScript"],
-		"tools": ["React", "Sass"]
-	},
-	{
-		"id": 11,
-		"company": "Photosnap",
-		"logo": "./images/photosnap.svg",
-		"new": false,
-		"featured": false,
-		"position": "Junior Front-end Dev",
-		"role": "Backend",
-		"level": "Junior",
-		"postedAt": "1mo ago",
-		"contract": "Part Time",
-		"location": "Worldwide",
-		"languages": ["JavaScript"],
-		"tools": ["React", "Sass"]
 	}
 ]
